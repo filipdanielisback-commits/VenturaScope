@@ -5,8 +5,15 @@
   "systems": [
     {
       "id": "community-system-001",
-      "label": "Pentium G630 desktop",
+      "label": "Lenovo 1652K8G desktop",
       "source": "User-reported Windows hardware information",
+      "systemManufacturer": "LENOVO",
+      "systemModel": "1652K8G",
+      "motherboard": {
+        "baseboardManufacturer": "LENOVO",
+        "baseboardProduct": "To be filled by O.E.M.",
+        "exactBoardModel": "unknown"
+      },
       "components": {
         "cpu": "Intel Pentium G630 @ 2.70 GHz",
         "graphics": {
@@ -29,7 +36,7 @@
         ]
       },
       "macOSVenturaCompatibility": "unknown",
-      "notes": "Hardware inventory supplied by the user from Windows. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
+      "notes": "Hardware inventory supplied by the user from Windows. BaseBoard Product does not expose an exact motherboard model. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
       "lastUpdated": "2026-11-12"
     }
   ]
