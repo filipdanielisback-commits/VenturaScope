@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Community system inventory profiles in VenturaScope."><title>VenturaScope · System Profiles</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#192331;--line:#304052;--text:#edf3fa;--muted:#aab8c8;--accent:#83c5ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,sans-serif}
+header,main,footer{width:min(100% - 32px,960px);margin:auto}header{padding:38px 0 20px}h1{font-size:clamp(2rem,6vw,3rem);margin:0}p,.muted{color:var(--muted)}
+a{color:var(--accent)}main{padding-bottom:44px}.profile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}
+h2{margin:0 0 4px}.status{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--accent);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:16px}
+section{border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}h3{margin:0 0 8px;font-size:1rem}
+dl{display:grid;grid-template-columns:100px 1fr;gap:4px 10px;margin:0}dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
+.notice{border-left:3px solid var(--accent);padding:10px 14px;background:#172333;border-radius:6px}
+footer{border-top:1px solid var(--line);padding:18px 0 30px;color:var(--muted);font-size:.9rem}
+</style></head><body>
+<header><h1>System Profiles</h1><p>Community-contributed hardware inventories, assembled from known component records.</p>
+<p><a href="../hardware-database/">← Hardware database</a> · <a href="../">Project home</a></p></header>
+<main><p class="notice">A system profile is an inventory, not a compatibility certification. Unknown components and unknown compatibility must remain clearly marked.</p>
+<div id="profiles" aria-live="polite"><p>Loading system profiles…</p></div></main>
+<footer>VenturaScope is an educational hardware inventory and compatibility research project. It does not install macOS or bypass platform or licensing restrictions.</footer>
+<script>
+const esc=v=>String(v??"Unknown").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function card(title,rows){return '<section><h3>'+esc(title)+'</h3><dl>'+rows.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join("")+'</dl></section>'}
+async function load(){
+ const root=document.querySelector("#profiles");
+ try{
+  const response=await fetch("../data/test-systems.json");if(!response.ok)throw new Error("Could not load test-systems.json");
+  const data=await response.json();const systems=data.systems||[];
+  if(!systems.length){root.innerHTML='<p class="muted">No community system profiles have been submitted yet.</p>';return}
+  root.innerHTML=systems.map(s=>{
+   const c=s.components||{},m=c.memory||{},g=c.graphics||{},cpu=c.cpu||{},board=s.motherboard||{},os=s.operatingSystem||{};
+   const storage=(c.storage||[]).map(d=>[d.disk,(d.type||"Unknown")+" · "+(d.capacityGB??"Unknown")+" GB"]).map(x=>x.join(": ")).join("; ")||"Unknown";
+   return '<article class="profile"><h2>'+esc(s.label||s.id)+'</h2><p class="muted">'+esc(s.systemManufacturer)+' '+esc(s.systemModel)+'</p><span class="status">Ventura compatibility: '+esc(s.macOSVenturaCompatibility||"unknown")+'</span>'+
+    '<div class="grid">'+
+    card("Processor",[["Model",cpu.model],["Architecture",s.processorArchitecture],["Cores",cpu.cores],["Logical processors",cpu.logicalProcessors],["Base frequency",cpu.baseFrequencyGHz!=null?cpu.baseFrequencyGHz+" GHz":null]])+
+    card("Graphics",[["GPU",g.name],["PCI vendor ID",g.pciVendorID],["PCI device ID",g.pciDeviceID]])+
+    card("Memory",[["Capacity",m.capacityGB!=null?m.capacityGB+" GB":null],["Type",m.type],["Speed",m.speedMHz!=null?m.speedMHz+" MHz":null],["Module count",m.moduleCount]])+
+    card("Motherboard",[["Manufacturer",board.baseboardManufacturer],["Reported product",board.baseboardProduct],["Exact model",board.exactBoardModel]])+
+    card("Storage",[["Drives",storage]])+
+    card("Operating system",[["Name",os.name],["Version",os.version],["Architecture",os.architecture]])+
+    card("Other components",[["Wi-Fi","Not identified"],["Audio controller","Not identified"]])+
+    '</div><p><strong>Research notes:</strong> '+esc(s.notes)+'</p><p class="muted">Source: '+esc(s.source)+' · Last updated: '+esc(s.lastUpdated)+'</p></article>';
+  }).join("");
+ }catch(e){root.innerHTML='<p class="notice">Could not load profiles: '+esc(e.message)+'. Open this page through GitHub Pages or a local web server.</p>'}
+}
+load();
+</script></body></html>
