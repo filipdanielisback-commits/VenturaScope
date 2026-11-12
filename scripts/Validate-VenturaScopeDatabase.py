@@ -79,6 +79,37 @@ for path in FILES:
                 if isinstance(url, str) and url and not url.startswith("https://"):
                     error(source_where, "source URL must use HTTPS")
 
+# Validate community system profiles separately from component records.
+systems_path = ROOT / "data" / "test-systems.json"
+try:
+    systems_data = json.loads(systems_path.read_text(encoding="utf-8"))
+    systems = systems_data.get("systems")
+    if not isinstance(systems, list):
+        error("test-systems.json", "systems must be an array")
+    else:
+        system_ids = set()
+        for index, system in enumerate(systems):
+            where = f"test-systems.json:systems[{index}]"
+            if not isinstance(system, dict):
+                error(where, "system profile must be an object")
+                continue
+            sid = system.get("id")
+            if not isinstance(sid, str) or not sid.strip():
+                error(where, "id must be a non-empty string")
+            elif sid in system_ids:
+                error(where, f"duplicate id {sid!r}")
+            else:
+                system_ids.add(sid)
+            for field in ("label", "systemManufacturer", "systemModel"):
+                if not isinstance(system.get(field), str) or not system[field].strip():
+                    error(where, f"{field} must be a non-empty string")
+            if not isinstance(system.get("components"), dict):
+                error(where, "components must be an object")
+            if system.get("macOSVenturaCompatibility") not in STATUSES:
+                error(where, f"macOSVenturaCompatibility must be one of {sorted(STATUSES)}")
+except (OSError, json.JSONDecodeError) as exc:
+    error("test-systems.json", f"cannot read valid JSON ({exc})")
+
 if errors:
     print("VenturaScope database validation failed:")
     for item in errors:
