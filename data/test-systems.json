@@ -19,10 +19,17 @@
           "type": "DDR3",
           "speedMHz": 1067,
           "moduleCount": null
-        }
+        },
+        "storage": [
+          {
+            "disk": "Disk 0",
+            "type": "HDD",
+            "capacityGB": 465.75
+          }
+        ]
       },
       "macOSVenturaCompatibility": "unknown",
-      "notes": "RAM capacity, DDR generation, and reported speed were supplied by the user. Task Manager may display a rounded speed; module count has not been checked.",
+      "notes": "Hardware inventory supplied by the user from Windows. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
       "lastUpdated": "2026-11-12"
     }
   ]
