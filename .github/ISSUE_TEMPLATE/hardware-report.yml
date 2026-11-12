@@ -1,0 +1,81 @@
+name: Hardware compatibility report
+description: Share a PC hardware inventory or a carefully documented compatibility observation
+title: "[Hardware report]: "
+labels: ["hardware-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing to VenturaScope! Please share only information you are comfortable making public.
+        **Never include serial numbers, Windows product keys, usernames, computer names, passwords, or other personal information.**
+        A hardware report is not proof of macOS compatibility.
+  - type: input
+    id: system-model
+    attributes:
+      label: System manufacturer and model
+      description: For example, Lenovo 1652K8G. Leave blank if unknown.
+      placeholder: Manufacturer and model
+    validations:
+      required: false
+  - type: input
+    id: cpu
+    attributes:
+      label: CPU model
+      placeholder: Exact processor model
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU model
+      placeholder: Exact graphics adapter model
+    validations:
+      required: true
+  - type: input
+    id: ram
+    attributes:
+      label: RAM
+      placeholder: Capacity, type, and speed if known
+    validations:
+      required: false
+  - type: textarea
+    id: other-hardware
+    attributes:
+      label: Other hardware details
+      description: Motherboard, storage, network adapter, and other relevant components. Do not post serial numbers.
+    validations:
+      required: false
+  - type: dropdown
+    id: report-kind
+    attributes:
+      label: What are you reporting?
+      options:
+        - Hardware inventory only
+        - Compatibility research with sources
+        - A reproducible test result
+        - A correction to an existing entry
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: What did you observe?
+      description: Include exact software versions and test conditions where relevant. Distinguish confirmed results from guesses.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources and evidence
+      description: Link manufacturer documentation, reputable technical references, or reproducible evidence.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Submission checklist
+      options:
+        - label: I have removed serial numbers, product keys, and personal information.
+          required: true
+        - label: I understand this report does not guarantee compatibility.
+          required: true
