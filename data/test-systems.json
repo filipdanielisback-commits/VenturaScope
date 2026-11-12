@@ -17,12 +17,12 @@
         "memory": {
           "capacityGB": 4,
           "type": "DDR3",
-          "speedMHz": null,
+          "speedMHz": 1067,
           "moduleCount": null
         }
       },
       "macOSVenturaCompatibility": "unknown",
-      "notes": "RAM capacity and DDR generation were reported by the user. Memory speed and module count have not been checked.",
+      "notes": "RAM capacity, DDR generation, and reported speed were supplied by the user. Task Manager may display a rounded speed; module count has not been checked.",
       "lastUpdated": "2026-11-12"
     }
   ]
