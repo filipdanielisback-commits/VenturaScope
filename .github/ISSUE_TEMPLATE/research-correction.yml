@@ -1,0 +1,44 @@
+name: Research correction
+description: Suggest a sourced correction to VenturaScope documentation or compatibility data
+title: "[Correction]: "
+labels: ["research", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the accuracy of VenturaScope. Please provide sources for factual corrections wherever possible.
+  - type: input
+    id: location
+    attributes:
+      label: File or entry to correct
+      placeholder: For example, data/gpu-compatibility.json
+    validations:
+      required: true
+  - type: textarea
+    id: current-claim
+    attributes:
+      label: Current wording or claim
+      description: Quote only the short part that needs review.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: Explain what should change and why.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting sources
+      description: Add manufacturer documentation or other reliable references.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Checklist
+      options:
+        - label: I have distinguished documented facts from assumptions or personal reports.
+          required: true
