@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "id": "intel-hd-graphics-sandy-bridge-dev-0102",
+      "manufacturer": "Intel",
+      "model": "Intel HD Graphics (Sandy Bridge generation)",
+      "architecture": "Sandy Bridge",
+      "hardware_ids": [
+        "PCI\\VEN_8086&DEV_0102&SUBSYS_307C17AA&REV_09"
+      ],
+      "assessment": {
+        "status": "unknown",
+        "claim": "The recorded hardware ID identifies an Intel graphics device, but does not by itself establish macOS Ventura graphics support.",
+        "limitations": ["Do not infer a more specific retail GPU name from this ID alone.", "No full-system compatibility conclusion."]
+      },
+      "sources": [
+        {
+          "title": "Intel ARK",
+          "url": "https://ark.intel.com/",
+          "type": "manufacturer",
+          "note": "Use the exact device and processor product pages where available."
+        }
+      ]
+    }
+  ]
+}
