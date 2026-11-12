@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "records": [],
+  "notes": [
+    "No audio codec or controller has been identified for the currently documented Lenovo system.",
+    "Add entries only with an exact model or hardware ID and a source.",
+    "Keep compatibility status unknown until directly relevant evidence exists."
+  ]
+}
