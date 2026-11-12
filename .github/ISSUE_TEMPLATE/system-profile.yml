@@ -1,0 +1,128 @@
+name: Community system profile submission
+description: Submit a sanitized hardware inventory for the VenturaScope system profiles
+title: "[System profile]: "
+labels: ["system-profile", "community-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! This issue is public. Submit only technical details needed to identify hardware.
+        **Do not attach raw diagnostic reports or screenshots. Never include serial numbers, service tags, product keys, usernames, computer names, MAC addresses, IP addresses, account details, or private file paths.**
+        Maintainers review submissions and may edit or decline incomplete entries. Submission does not establish macOS compatibility.
+  - type: input
+    id: system-label
+    attributes:
+      label: Public system label
+      description: A generic label such as "Desktop A" or manufacturer and model. Do not use your name.
+      placeholder: Example: Lenovo 1652K8G desktop
+    validations:
+      required: true
+  - type: input
+    id: manufacturer-model
+    attributes:
+      label: System manufacturer and model
+      placeholder: Exact model, or "Unknown"
+    validations:
+      required: true
+  - type: input
+    id: motherboard
+    attributes:
+      label: Motherboard model and chipset
+      placeholder: Exact model if known; otherwise "Unknown"
+    validations:
+      required: false
+  - type: input
+    id: cpu
+    attributes:
+      label: CPU model
+      placeholder: Exact processor model
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU model and hardware ID (optional)
+      placeholder: Exact model; omit hardware ID if unsure
+    validations:
+      required: true
+  - type: input
+    id: memory
+    attributes:
+      label: Memory
+      description: Capacity, type, and speed if known. Module count is optional.
+      placeholder: Example: 16 GB DDR4
+    validations:
+      required: false
+  - type: textarea
+    id: storage
+    attributes:
+      label: Storage devices
+      description: Drive type, model family, and approximate capacity only. No serial numbers.
+    validations:
+      required: false
+  - type: input
+    id: networking
+    attributes:
+      label: Wi-Fi / Ethernet adapter
+      placeholder: Exact adapter model if known
+    validations:
+      required: false
+  - type: input
+    id: audio
+    attributes:
+      label: Audio controller / codec
+      placeholder: Exact model if known
+    validations:
+      required: false
+  - type: input
+    id: firmware
+    attributes:
+      label: BIOS / UEFI vendor and version
+      description: Do not include firmware passwords or device serial numbers.
+    validations:
+      required: false
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system used to collect this inventory
+      placeholder: Example: Windows 11 24H2
+    validations:
+      required: false
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and sources
+      description: Link public manufacturer specifications or explain how the model names were identified. Do not upload raw reports.
+    validations:
+      required: false
+  - type: dropdown
+    id: compatibility
+    attributes:
+      label: Ventura compatibility evidence
+      description: Choose Unknown unless you have exact, public evidence. This is not a request to attempt an unsupported installation.
+      options:
+        - Unknown — inventory only
+        - Documented
+        - Reported
+        - Independently verified
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes and limitations
+      description: Explain missing or uncertain component identifications.
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy and publication
+      options:
+        - label: I checked that this public submission contains no personal or device-unique identifiers or secrets.
+          required: true
+        - label: I understand maintainers may use the technical details in a public VenturaScope system profile after review.
+          required: true
+        - label: I understand this inventory is not a compatibility certification.
+          required: true
