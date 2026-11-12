@@ -21,7 +21,12 @@
       },
       "processorArchitecture": "x64",
       "components": {
-        "cpu": "Intel Pentium G630 @ 2.70 GHz",
+        "cpu": {
+          "model": "Intel Pentium G630",
+          "baseFrequencyGHz": 2.7,
+          "cores": 2,
+          "logicalProcessors": 2
+        },
         "graphics": {
           "name": "Intel HD Graphics (Sandy Bridge)",
           "pciVendorID": "8086",
@@ -42,7 +47,7 @@
         ]
       },
       "macOSVenturaCompatibility": "unknown",
-      "notes": "Hardware and OS inventory supplied by the user from Windows. Windows reports a 64-bit operating system and x64-based processor. BaseBoard Product does not expose an exact motherboard model. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
+      "notes": "Hardware and OS inventory supplied by the user from Windows. Windows reports a 64-bit operating system and x64-based processor. CPU core and logical processor counts were read from Task Manager. BaseBoard Product does not expose an exact motherboard model. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
       "lastUpdated": "2026-11-12"
     }
   ]
