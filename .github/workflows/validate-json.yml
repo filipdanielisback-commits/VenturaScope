@@ -5,6 +5,7 @@ on:
     paths:
       - "data/**/*.json"
       - ".github/workflows/validate-json.yml"
+      - "scripts/Validate-VenturaScopeDatabase.py"
   pull_request:
     paths:
       - "data/**/*.json"
