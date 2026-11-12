@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "record_type": "component",
+  "component": {
+    "category": "cpu | gpu | motherboard | networking | storage | memory | audio | other",
+    "manufacturer": null,
+    "model": null,
+    "hardware_ids": [],
+    "revision": null
+  },
+  "platform_context": {
+    "operating_system": null,
+    "version": null,
+    "test_conditions": null
+  },
+  "assessment": {
+    "status": "unknown",
+    "claim": null,
+    "limitations": []
+  },
+  "sources": [],
+  "reported_by": null,
+  "last_reviewed": null
+}
