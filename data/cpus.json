@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "id": "intel-pentium-g630",
+      "manufacturer": "Intel",
+      "model": "Pentium G630",
+      "family": "Pentium",
+      "architecture": "Sandy Bridge",
+      "cores": 2,
+      "threads": 2,
+      "integrated_graphics": "Intel HD Graphics",
+      "hardware_ids": [],
+      "assessment": {
+        "status": "unknown",
+        "claim": "No Ventura compatibility conclusion has been established for this processor or any complete system using it.",
+        "limitations": ["CPU identification does not establish motherboard, firmware, graphics, or full-system compatibility."]
+      },
+      "sources": [
+        {
+          "title": "Intel ARK - Pentium Processor G630",
+          "url": "https://ark.intel.com/",
+          "type": "manufacturer",
+          "note": "Search the Intel product database for the exact processor model; verify specifications against the matching product entry."
+        }
+      ]
+    }
+  ]
+}
