@@ -1,0 +1,54 @@
+name: Deploy hardware database viewer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "hardware-database/**"
+      - "data/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Prepare static site
+        run: |
+          mkdir -p _site/data _site/hardware-database
+          cp -R hardware-database/. _site/hardware-database/
+          cp -R data/. _site/data/
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=hardware-database/"><title>VenturaScope</title></head>
+          <body><p><a href="hardware-database/">Open the VenturaScope hardware database</a></p></body>
+          </html>
+          EOF
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
