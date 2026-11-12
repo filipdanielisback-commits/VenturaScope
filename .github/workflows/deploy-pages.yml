@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "hardware-database/**"
+      - "system-profiles/**"
       - "data/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
@@ -30,8 +31,9 @@ jobs:
 
       - name: Prepare static site
         run: |
-          mkdir -p _site/data _site/hardware-database
+          mkdir -p _site/data _site/hardware-database _site/system-profiles
           cp -R hardware-database/. _site/hardware-database/
+          cp -R system-profiles/. _site/system-profiles/
           cp -R data/. _site/data/
           cat > _site/index.html <<'EOF'
           <!doctype html>
