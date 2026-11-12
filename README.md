@@ -21,6 +21,7 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 - [Open the hardware database viewer source](hardware-database/index.html)
 - [Open the live hardware database](https://filipdanielisback-commits.github.io/VenturaScope/hardware-database/)
 - [Browse community system profiles](https://filipdanielisback-commits.github.io/VenturaScope/system-profiles/)
+- [How to submit a community system profile](docs/community-system-profiles.md)
 - Browse the raw records in [`data/`](data/)
 
 ## Repository layout
