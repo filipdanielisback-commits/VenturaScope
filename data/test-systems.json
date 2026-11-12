@@ -14,6 +14,10 @@
         "baseboardProduct": "To be filled by O.E.M.",
         "exactBoardModel": "unknown"
       },
+      "operatingSystem": {
+        "name": "Windows 10 Home",
+        "version": "22H2"
+      },
       "components": {
         "cpu": "Intel Pentium G630 @ 2.70 GHz",
         "graphics": {
@@ -36,7 +40,7 @@
         ]
       },
       "macOSVenturaCompatibility": "unknown",
-      "notes": "Hardware inventory supplied by the user from Windows. BaseBoard Product does not expose an exact motherboard model. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
+      "notes": "Hardware and OS inventory supplied by the user from Windows. BaseBoard Product does not expose an exact motherboard model. RAM speed may be rounded by Task Manager. Removable Disk 1 was observed but not identified further. macOS Ventura compatibility has not been established.",
       "lastUpdated": "2026-11-12"
     }
   ]
