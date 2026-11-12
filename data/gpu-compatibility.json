@@ -2,15 +2,24 @@
   "schemaVersion": "1.0.0",
   "project": "VenturaScope",
   "macOSRelease": "Ventura 13",
-  "notice": "Research starter dataset only. No GPU support claims have been verified in this file.",
+  "notice": "Research starter dataset only. Compatibility status is not a guarantee of working support.",
   "entries": [
     {
-      "vendor": "Unknown",
-      "model": "Add an exact GPU model",
+      "vendor": "Intel",
+      "model": "Intel HD Graphics (Sandy Bridge integrated graphics)",
+      "associatedCPU": "Intel Pentium G630 @ 2.70 GHz",
+      "pciVendorID": "8086",
+      "pciDeviceID": "0102",
+      "reportedWindowsName": "Intel(R) HD Graphics",
+      "reportedHardwareID": "PCI\\VEN_8086&DEV_0102&SUBSYS_307C17AA&REV_09",
+      "subsystemID": "307C17AA",
       "status": "unknown",
-      "notes": "Replace this example with a narrowly scoped, sourced research entry.",
-      "sources": [],
-      "lastReviewed": null
+      "notes": "Identified from the supplied Windows hardware ID and CPU model. The Pentium G630 product documentation identifies its processor graphics as Intel HD Graphics. Ventura compatibility has not been established; do not infer support from the PCI ID alone.",
+      "sources": [
+        "https://community.intel.com/cipcp26785/attachments/cipcp26785/optimized-ai-frameworks/443/1/DH67CL.pdf",
+        "https://www.graphics-drivers.eu/intel-pci-hardware-id-string.html"
+      ],
+      "lastReviewed": "2026-11-12"
     }
   ]
 }
