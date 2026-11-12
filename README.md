@@ -16,9 +16,7 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 
 ## Current status
 
-<badge>Early development</badge>
-
-The first milestone is a read-only Windows inventory report. Compatibility entries will be added only when they have credible supporting sources.
+**Early development.** The first milestone is a read-only Windows inventory report. Compatibility entries will be added only when they have credible supporting sources.
 
 ## Repository layout
 
@@ -40,9 +38,8 @@ VenturaScope/
 2. From the repository folder, run:
 
    ```powershell
-   .\scripts\Get-VenturaScopeReport.ps1
+   .\\scripts\\Get-VenturaScopeReport.ps1
    ```
-
 3. The script displays a hardware summary and writes a JSON report to your Desktop.
 
 The script reads hardware information through Windows management interfaces. It does not change system settings. Review the report before sharing it; hardware details can still reveal information about your device.
