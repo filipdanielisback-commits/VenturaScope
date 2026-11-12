@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "id": "lenovo-1652k8g-system-board-unknown",
+      "manufacturer": "LENOVO",
+      "system_model": "1652K8G",
+      "board_manufacturer_reported": "LENOVO",
+      "board_model_reported": "To be filled by O.E.M.",
+      "board_model": null,
+      "chipset": null,
+      "revision": null,
+      "assessment": {
+        "status": "unknown",
+        "claim": "The exact motherboard model and chipset have not been established.",
+        "limitations": ["The system model is not a substitute for an exact board model."]
+      },
+      "sources": []
+    }
+  ]
+}
