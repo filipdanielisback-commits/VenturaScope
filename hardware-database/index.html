@@ -60,17 +60,24 @@ function render(){
     const title=r.model||r.system_model||r.id||"Unnamed record";
     const fields=[
       ["Manufacturer",r.manufacturer],
-      ["Family / architecture",[r.family,r.architecture].filter(Boolean).join(" / ")||null],
-      ["Hardware IDs",Array.isArray(r.hardware_ids)&&r.hardware_ids.length?r.hardware_ids.join(", "):null],
+      ["System model",r.system_model],
+      ["Family",r.family],
+      ["Architecture / generation",r.architecture],
       ["Cores / threads",r.cores!=null?[r.cores,r.threads??"unknown"].join(" / "):null],
-      ["Board model",r.board_model??r.board_model_reported],
-      ["Chipset",r.chipset]
+      ["Integrated graphics",r.integrated_graphics],
+      ["Hardware IDs",Array.isArray(r.hardware_ids)&&r.hardware_ids.length?r.hardware_ids.join(", "):null],
+      ["Board manufacturer (reported)",r.board_manufacturer_reported],
+      ["Board model (reported)",r.board_model_reported],
+      ["Board model (identified)",r.board_model],
+      ["Chipset",r.chipset],
+      ["Revision",r.revision]
     ].filter(x=>x[1]!=null&&x[1]!=="");
     const status=r.assessment?.status||"unknown";
     const sourceLinks=(r.sources||[]).filter(s=>s.url).map(s=>'<a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">'+esc(s.title||s.url)+'</a>').join(" · ");
     return '<article><span class="tag">'+esc(r.label)+'</span><h2>'+esc(title)+'</h2><span class="tag">Status: '+esc(status)+'</span><dl>'+
       fields.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join("")+
       '<dt>Assessment</dt><dd>'+esc(r.assessment?.claim||"No compatibility assessment recorded.")+'</dd></dl>'+
+      (r.assessment?.limitations?.length?'<p><strong>Limitations:</strong></p><ul>'+r.assessment.limitations.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>':'')+
       (sourceLinks?'<p><strong>Sources:</strong> '+sourceLinks+'</p>':'<p class="muted">No sources recorded yet.</p>')+
       '</article>';
   }).join(""):'<p class="empty">No matching records. Try another search or component filter.</p>';
