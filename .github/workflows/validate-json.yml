@@ -27,3 +27,6 @@ jobs:
             echo "Checking $file"
             python -m json.tool "$file" > /dev/null
           done < <(find data -type f -name '*.json' -print0)
+
+      - name: Validate hardware database records
+        run: python scripts/Validate-VenturaScopeDatabase.py
