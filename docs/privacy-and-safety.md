@@ -12,3 +12,7 @@ VenturaScope is a public research repository. Anything submitted in an issue or 
 
 ## Safer reporting
 Share only the hardware model and technical details needed for the research. Redact screenshots before posting. If sensitive information was posted, contact the repository maintainers promptly and rotate any exposed credentials.
+
+## Community system profiles
+
+System profile submissions are public and reviewed manually. Submit only sanitized hardware model details. Do not attach raw diagnostic exports. See [Community System Profiles](community-system-profiles.md) for the submission process and publication rules.
