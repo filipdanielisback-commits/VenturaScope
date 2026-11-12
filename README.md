@@ -16,10 +16,11 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 
 ## Current status
 
-**Early development.** VenturaScope includes a read-only Windows inventory report, research documentation, separate component databases, a searchable hardware database viewer, and automated checks for database record structure and evidence metadata.
+**Early development.** VenturaScope includes a read-only Windows inventory report, research documentation, separate component databases, a searchable hardware database viewer, community system profiles, and automated checks for database record structure and evidence metadata.
 
 - [Open the hardware database viewer source](hardware-database/index.html)
-- [Open the live hardware database](https://filipdanielisback-commits.github.io/VenturaScope/hardware-database/) *(available after GitHub Pages is enabled and the deployment succeeds)*
+- [Open the live hardware database](https://filipdanielisback-commits.github.io/VenturaScope/hardware-database/)
+- [Browse community system profiles](https://filipdanielisback-commits.github.io/VenturaScope/system-profiles/)
 - Browse the raw records in [`data/`](data/)
 
 ## Repository layout
