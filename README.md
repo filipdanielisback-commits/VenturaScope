@@ -16,7 +16,10 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 
 ## Current status
 
-**Early development.** The first milestone is a read-only Windows inventory report. Compatibility entries will be added only when they have credible supporting sources.
+**Early development.** VenturaScope includes a read-only Windows inventory report, research documentation, separate component databases, and a searchable hardware database viewer.
+
+- [Open the hardware database viewer](hardware-database/index.html)
+- Browse the raw records in [`data/`](data/)
 
 ## Repository layout
 
