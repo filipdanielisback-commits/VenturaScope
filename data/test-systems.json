@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "VenturaScope",
+  "notice": "Community-reported hardware inventory for research. This is not a compatibility certification or a claim that macOS Ventura runs on this system.",
+  "systems": [
+    {
+      "id": "community-system-001",
+      "label": "Pentium G630 desktop",
+      "source": "User-reported Windows hardware information",
+      "components": {
+        "cpu": "Intel Pentium G630 @ 2.70 GHz",
+        "graphics": {
+          "name": "Intel HD Graphics (Sandy Bridge)",
+          "pciVendorID": "8086",
+          "pciDeviceID": "0102"
+        },
+        "memory": {
+          "capacityGB": 4,
+          "type": "DDR3",
+          "speedMHz": null,
+          "moduleCount": null
+        }
+      },
+      "macOSVenturaCompatibility": "unknown",
+      "notes": "RAM capacity and DDR generation were reported by the user. Memory speed and module count have not been checked.",
+      "lastUpdated": "2026-11-12"
+    }
+  ]
+}
