@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search the VenturaScope open hardware research database.">
+  <title>VenturaScope Hardware Database</title>
+  <style>
+    :root{color-scheme:dark;--bg:#10151d;--panel:#192331;--line:#304052;--text:#edf3fa;--muted:#aab8c8;--accent:#83c5ff}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+    header,main,footer{width:min(100% - 32px,1000px);margin:auto}header{padding:42px 0 24px}h1{margin:0;font-size:clamp(2rem,6vw,3rem)}header p,.muted{color:var(--muted)}
+    main{padding-bottom:48px}.controls{display:grid;grid-template-columns:1fr minmax(160px,220px);gap:12px;margin:16px 0 22px}
+    input,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit}
+    #count{color:var(--muted);margin:12px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px}
+    article{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+    article h2{font-size:1.1rem;margin:0 0 8px;overflow-wrap:anywhere}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:.8rem;color:var(--accent);margin:0 0 10px}
+    dl{display:grid;grid-template-columns:110px 1fr;gap:5px 10px;margin:12px 0}dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
+    a{color:var(--accent)}.empty,.error{padding:20px;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:20px 0 32px;color:var(--muted);font-size:.9rem}
+    @media(max-width:560px){.controls{grid-template-columns:1fr}dl{grid-template-columns:90px 1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>VenturaScope</h1>
+  <p>Hardware research database · Search component records and inspect their evidence status.</p>
+  <p><a href="../">← Back to project repository</a></p>
+</header>
+<main>
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search model, manufacturer, hardware ID…" aria-label="Search hardware records">
+    <select id="category" aria-label="Filter by component">
+      <option value="all">All components</option><option value="cpu">CPU</option><option value="gpu">GPU</option>
+      <option value="motherboard">Motherboard</option><option value="wifi">Wi-Fi</option><option value="audio">Audio</option>
+    </select>
+  </div>
+  <p id="count" aria-live="polite">Loading database…</p>
+  <section id="records" class="grid" aria-label="Hardware records"></section>
+</main>
+<footer>
+  VenturaScope is a research and inventory project, not an installer or compatibility guarantee.
+  Unknown means the available evidence is insufficient. Always consult the linked sources and project methodology.
+</footer>
+<script>
+const datasets=[
+  {key:"cpu",label:"CPU",url:"../data/cpus.json"},
+  {key:"gpu",label:"GPU",url:"../data/gpus.json"},
+  {key:"motherboard",label:"Motherboard",url:"../data/motherboards.json"},
+  {key:"wifi",label:"Wi-Fi",url:"../data/wifi.json"},
+  {key:"audio",label:"Audio",url:"../data/audio.json"}
+];
+const esc=value=>String(value??"—").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const recordsEl=document.querySelector("#records"),searchEl=document.querySelector("#search"),categoryEl=document.querySelector("#category"),countEl=document.querySelector("#count");
+let records=[];
+function render(){
+  const term=searchEl.value.trim().toLowerCase(),category=categoryEl.value;
+  const filtered=records.filter(r=>(category==="all"||r.category===category)&&(!term||JSON.stringify(r).toLowerCase().includes(term)));
+  countEl.textContent=filtered.length+" record"+(filtered.length===1?"":"s")+" shown · "+records.length+" total";
+  recordsEl.innerHTML=filtered.length?filtered.map(r=>{
+    const title=r.model||r.system_model||r.id||"Unnamed record";
+    const fields=[
+      ["Manufacturer",r.manufacturer],
+      ["Family / architecture",[r.family,r.architecture].filter(Boolean).join(" / ")||null],
+      ["Hardware IDs",Array.isArray(r.hardware_ids)&&r.hardware_ids.length?r.hardware_ids.join(", "):null],
+      ["Cores / threads",r.cores!=null?[r.cores,r.threads??"unknown"].join(" / "):null],
+      ["Board model",r.board_model??r.board_model_reported],
+      ["Chipset",r.chipset]
+    ].filter(x=>x[1]!=null&&x[1]!=="");
+    const status=r.assessment?.status||"unknown";
+    const sourceLinks=(r.sources||[]).filter(s=>s.url).map(s=>'<a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">'+esc(s.title||s.url)+'</a>').join(" · ");
+    return '<article><span class="tag">'+esc(r.label)+'</span><h2>'+esc(title)+'</h2><span class="tag">Status: '+esc(status)+'</span><dl>'+
+      fields.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join("")+
+      '<dt>Assessment</dt><dd>'+esc(r.assessment?.claim||"No compatibility assessment recorded.")+'</dd></dl>'+
+      (sourceLinks?'<p><strong>Sources:</strong> '+sourceLinks+'</p>':'<p class="muted">No sources recorded yet.</p>')+
+      '</article>';
+  }).join(""):'<p class="empty">No matching records. Try another search or component filter.</p>';
+}
+async function load(){
+  try{
+    const loaded=await Promise.all(datasets.map(async d=>{
+      const response=await fetch(d.url);if(!response.ok)throw new Error("Could not load "+d.url);
+      const data=await response.json();
+      return (data.records||[]).map(r=>({...r,category:d.key,label:d.label}));
+    }));
+    records=loaded.flat();render();
+  }catch(error){
+    countEl.textContent="Database could not be loaded.";
+    recordsEl.innerHTML='<p class="error">Please open this page through GitHub Pages or a local web server so its JSON files can be fetched. '+esc(error.message)+'</p>';
+  }
+}
+searchEl.addEventListener("input",render);categoryEl.addEventListener("change",render);load();
+</script>
+</body>
+</html>
