@@ -35,7 +35,7 @@ VenturaScope/
 │   ├── motherboards.json
 │   ├── wifi.json
 │   ├── audio.json
-   │   ├── storage.json
+│   ├── storage.json
 │   ├── test-systems.json
 │   └── sources.json
 ├── docs/
