@@ -9,6 +9,7 @@ This directory contains structured research records and source references.
 - `motherboards.json` — system and motherboard identifiers, revisions, and chipset evidence.
 - `wifi.json` — Wi-Fi adapter models and hardware IDs.
 - `audio.json` — audio codecs/controllers and codec-specific evidence.
+- `storage.json` — HDD/SSD models, interfaces, and storage-controller evidence.
 - `test-systems.json` — voluntarily contributed whole-system hardware inventories; not compatibility certifications.
 
 ## Research support
