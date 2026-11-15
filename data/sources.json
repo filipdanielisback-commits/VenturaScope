@@ -1,4 +1,85 @@
 {
   "schema_version": 1,
-  "sources": []
+  "sources": [
+    {
+      "id": "apple-ventura-compatible-computers",
+      "title": "Apple Support - macOS Ventura is compatible with these computers",
+      "url": "https://support.apple.com/en-me/102861",
+      "type": "official-os-documentation",
+      "accessed": "2026-11-15",
+      "note": "Apple's archived list of Mac models compatible with Ventura. It defines Apple's supported Mac model list and is not a compatibility statement for non-Apple PCs."
+    },
+    {
+      "id": "intel-2nd-gen-desktop-datasheet",
+      "title": "Intel second-generation desktop Core, Pentium, and Celeron processor datasheet",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/2nd-gen-core-desktop-vol-1-datasheet.pdf",
+      "type": "manufacturer",
+      "accessed": "2026-11-15",
+      "note": "Includes Pentium G630 in the desktop Pentium G600 series. It is hardware documentation, not macOS compatibility evidence."
+    },
+    {
+      "id": "intel-graphics-driver-list",
+      "title": "Intel - List of Drivers for Intel Graphics",
+      "url": "https://www.intel.com/content/www/us/en/support/articles/000090440/processors.html",
+      "type": "manufacturer",
+      "accessed": "2026-11-15",
+      "note": "Lists Pentium G630 in an Intel HD Graphics Windows driver group. This does not establish macOS support."
+    },
+    {
+      "id": "dortania-hardware-limitations",
+      "title": "Dortania OpenCore Install Guide - Hardware Limitations",
+      "url": "https://dortania.github.io/OpenCore-Install-Guide/macos-limits",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Current guide states Ventura drops pre-Haswell CPU support and discusses AVX2 requirements. It is community project guidance, not an Apple certification."
+    },
+    {
+      "id": "dortania-sandy-bridge-desktop",
+      "title": "Dortania OpenCore Install Guide - Desktop Sandy Bridge",
+      "url": "https://dortania.github.io/OpenCore-Install-Guide/config.plist/sandy-bridge.html",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Lists macOS 12 Monterey as the last supported OS for the Sandy Bridge desktop guide and says the iGPU is officially supported only through macOS 10.13."
+    },
+    {
+      "id": "dortania-legacy-intel-gpu",
+      "title": "Dortania GPU Buyers Guide - Legacy Intel",
+      "url": "https://dortania.github.io/GPU-Buyers-Guide/legacy-gpus/legacy-intel.html",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Sandy Bridge 2XXX graphics section lists High Sierra 10.13.6 as the highest supported OS and names HD 2000, HD 3000, and HD P3000. Exact device mapping remains necessary."
+    },
+    {
+      "id": "openintelwireless-compatibility",
+      "title": "OpenIntelWireless - Compatibility",
+      "url": "https://openintelwireless.github.io/itlwm/Compat.html",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Lists supported Intel Wi-Fi adapter families and directs readers to source files for exact PCI IDs. Check exact card and driver version."
+    },
+    {
+      "id": "openintelwireless-itlwm-releases",
+      "title": "OpenIntelWireless - itlwm releases",
+      "url": "https://github.com/OpenIntelWireless/itlwm/releases",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Release v2.2.0 explicitly added macOS Ventura support and notes Handoff is disabled on Ventura. The current v2.3.0 release notes Sonoma support."
+    },
+    {
+      "id": "applealc-supported-codecs",
+      "title": "AppleALC - Supported codecs",
+      "url": "https://github.com/acidanthera/AppleALC/wiki/supported-codecs",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Current table v1.9.8, edited 2026-09-30, lists codec revisions and layouts. MinKernel values are Darwin kernel versions; the table explicitly labels 13 as macOS 10.9."
+    },
+    {
+      "id": "nvmefix-readme",
+      "title": "Acidanthera - NVMeFix",
+      "url": "https://github.com/acidanthera/NVMeFix",
+      "type": "project-documentation",
+      "accessed": "2026-11-15",
+      "note": "Describes targeted power-management and timeout-panic workarounds for some NVMe controllers. It does not establish universal SSD or storage-controller compatibility."
+    }
+  ]
 }
