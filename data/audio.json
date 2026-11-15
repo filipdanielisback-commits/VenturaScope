@@ -4,6 +4,8 @@
   "notes": [
     "No audio codec or controller has been identified for the currently documented Lenovo system.",
     "Add entries only with an exact model or hardware ID and a source.",
-    "Keep compatibility status unknown until directly relevant evidence exists."
+    "Keep compatibility status unknown until directly relevant evidence exists.",
+    "Research lead checked 2026-11-15: the current AppleALC supported-codec table lists codec revisions, layout IDs, and MinKernel/MaxKernel ranges. Its notation explicitly maps MinKernel 13 to macOS 10.9, so the kernel number must not be confused with the macOS marketing version number 13 (Ventura).",
+    "When an exact codec is identified, verify its revision and layout in the current AppleALC table and record the macOS Ventura point release used for any test."
   ]
 }
