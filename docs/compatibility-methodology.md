@@ -12,14 +12,19 @@ Every compatibility statement should identify:
 4. What was actually tested and what worked or did not work.
 5. A direct source URL and the date it was checked.
 
-Prefer primary documentation, vendor documentation, and reproducible technical reports. A forum post can be useful evidence of a report, but should not be presented as universal proof.
+Prefer manufacturer documentation, official operating-system documentation, authoritative project documentation, and reproducible technical reports. A forum post can be useful evidence of a report, but should not be presented as universal proof.
 
 ## Status meanings
 
-- **documented**: reliable source directly supports the narrowly stated claim.
-- **reported**: a user or community report exists, but important details or independent confirmation are missing.
-- **unknown**: evidence is insufficient.
-- **not-supported**: a reliable source documents a limitation for that exact context.
+Use only these labels:
+
+- **Documented** — a reliable primary source or authoritative technical/project document directly supports the narrowly stated claim for the specified context.
+- **Reported** — a user or community report exists, but important details or independent confirmation are missing.
+- **Independently verified** — the same narrowly defined observation is supported by independent, reproducible evidence.
+- **Unknown** — evidence is insufficient, missing, or conflicting.
+- **Not applicable** — the field does not apply.
+
+A documented limitation should be recorded as **Documented** with the limitation stated precisely; do not create a separate "Not supported" status. Documented does not mean Apple-certified or universally compatible.
 
 Do not infer that every product using the same GPU brand or family behaves identically. Laptop GPUs, desktop cards, different silicon revisions, and different vendor implementations can differ.
 
