@@ -11,15 +11,32 @@
       ],
       "assessment": {
         "status": "unknown",
-        "claim": "The recorded hardware ID identifies an Intel graphics device, but does not by itself establish macOS Ventura graphics support.",
-        "limitations": ["Do not infer a more specific retail GPU name from this ID alone.", "No full-system compatibility conclusion."]
+        "claim": "The recorded adapter is identified as Intel HD Graphics from the Sandy Bridge generation. Intel's Windows graphics-driver list includes the Pentium G630 among processors using Intel HD Graphics. Dortania's Sandy Bridge graphics guidance lists High Sierra 10.13.6 as the highest supported OS for the family, but its named iGPU list contains HD 2000, HD 3000, and HD P3000 rather than this exact PCI device ID. No exact-device Ventura result has been established.",
+        "limitations": [
+          "Intel's driver list documents Windows driver support only; it does not establish macOS support.",
+          "The exact PCI ID PCI\\VEN_8086&DEV_0102&SUBSYS_307C17AA&REV_09 is not individually named in the cited macOS graphics guide.",
+          "Do not relabel device ID 0102 as HD 2000 or HD 3000 without an exact mapping source.",
+          "The family-level graphics guidance is not an exact-device Ventura test and does not establish whole-system compatibility."
+        ]
       },
       "sources": [
         {
-          "title": "Intel ARK",
-          "url": "https://ark.intel.com/",
+          "title": "Intel - List of Drivers for Intel Graphics",
+          "url": "https://www.intel.com/content/www/us/en/support/articles/000090440/processors.html",
           "type": "manufacturer",
-          "note": "Use the exact device and processor product pages where available."
+          "note": "Intel's legacy Windows graphics-driver list includes Pentium G630 in the Intel HD Graphics group. This is Windows driver evidence only. Last reviewed 2025-10-08; accessed 2026-11-15."
+        },
+        {
+          "title": "Dortania GPU Buyers Guide - Legacy Intel",
+          "url": "https://dortania.github.io/GPU-Buyers-Guide/legacy-gpus/legacy-intel.html",
+          "type": "project",
+          "note": "The Sandy Bridge 2XXX section lists High Sierra 10.13.6 as the highest supported OS and names HD 2000, HD 3000, and HD P3000. It does not explicitly map the recorded PCI ID. Accessed 2026-11-15."
+        },
+        {
+          "title": "Dortania OpenCore Install Guide - Desktop Sandy Bridge",
+          "url": "https://dortania.github.io/OpenCore-Install-Guide/config.plist/sandy-bridge.html",
+          "type": "project",
+          "note": "States Sandy Bridge iGPU support is officially available only through macOS 10.13. Accessed 2026-11-15."
         }
       ]
     }
