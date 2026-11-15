@@ -4,6 +4,8 @@
   "notes": [
     "No Wi-Fi adapter has been identified for the currently documented Lenovo system.",
     "Add entries only when the exact adapter model or hardware ID is known.",
-    "Do not infer Wi-Fi support from the computer manufacturer or product family."
+    "Do not infer Wi-Fi support from the computer manufacturer or product family.",
+    "Research lead checked 2026-11-15: OpenIntelWireless publishes a compatibility list with adapter families and points to source files for exact PCI IDs. Its itlwm v2.2.0 release explicitly added macOS Ventura support; the same release notes say Handoff is disabled on Ventura. This is project documentation, not proof for an unidentified adapter or complete system.",
+    "Record the exact adapter, PCI ID, driver/kext version, macOS point release, and any feature limitations before changing a status from unknown."
   ]
 }
