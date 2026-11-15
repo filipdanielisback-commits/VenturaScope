@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
     ROOT / "data" / name
-    for name in ("cpus.json", "gpus.json", "motherboards.json", "wifi.json", "audio.json")
+    for name in ("cpus.json", "gpus.json", "motherboards.json", "wifi.json", "audio.json", "storage.json")
 ]
 STATUSES = {"documented", "reported", "independently_verified", "unknown", "not_applicable"}
 errors = []
