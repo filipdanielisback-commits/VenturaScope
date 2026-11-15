@@ -11,7 +11,7 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 - Collect a local hardware inventory on Windows.
 - Record exact CPU and GPU model names, memory, Windows version, and storage-device summaries.
 - Maintain a transparent, evidence-based compatibility research database.
-- Clearly distinguish confirmed information, reported results, unknowns, and unsupported configurations.
+- Clearly distinguish documented evidence, community reports, independently verified observations, unknowns, and fields that do not apply.
 - Help contributors document sources and hardware revisions.
 
 ## Current status
@@ -22,20 +22,29 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 - [Open the live hardware database](https://filipdanielisback-commits.github.io/VenturaScope/hardware-database/)
 - [Browse community system profiles](https://filipdanielisback-commits.github.io/VenturaScope/system-profiles/)
 - [How to submit a community system profile](docs/community-system-profiles.md)
-- Browse the raw records in [`data/`](data/)
+- Browse the raw records in [data/](data/)
 
 ## Repository layout
 
 ```text
 VenturaScope/
 ├── data/
-│   └── gpu-compatibility.json
+│   ├── cpus.json
+│   ├── gpus.json
+│   ├── motherboards.json
+│   ├── wifi.json
+│   ├── audio.json
+│   ├── test-systems.json
+│   └── sources.json
 ├── docs/
-│   └── compatibility-methodology.md
-├── scripts/
-│   └── Get-VenturaScopeReport.ps1
-├── CONTRIBUTING.md
-└── README.md
+│   ├── compatibility-methodology.md
+│   ├── compatibility-status-definitions.md
+│   └── ...
+├── hardware-database/
+├── system-profiles/
+└── scripts/
+    ├── Get-VenturaScopeReport.ps1
+    └── Validate-VenturaScopeDatabase.py
 ```
 
 ## Quick start
@@ -44,7 +53,7 @@ VenturaScope/
 2. From the repository folder, run:
 
    ```powershell
-   .\\scripts\\Get-VenturaScopeReport.ps1
+   .\scripts\Get-VenturaScopeReport.ps1
    ```
 3. The script displays a hardware summary and writes a JSON report to your Desktop.
 
@@ -52,16 +61,19 @@ The script reads hardware information through Windows management interfaces. It 
 
 ## Compatibility labels
 
-- **Documented** — supported by a cited, relevant source for the exact hardware and software context.
-- **Reported** — a community report exists, but independent confirmation or exact configuration details may be missing.
-- **Unknown** — not enough reliable evidence to make a claim.
-- **Not supported** — a trustworthy source explicitly documents a limitation for the stated context.
+Use only the five labels defined in [Compatibility Status Definitions](docs/compatibility-status-definitions.md):
 
-An entry must include sources and notes. A GPU family name alone is not enough to establish support for every card in that family.
+- **Documented** — a reliable primary source or authoritative technical/project document directly supports the narrowly stated claim for the specified context.
+- **Reported** — a contributor or community source reports an observation, but important details or independent confirmation are missing.
+- **Independently verified** — the same narrowly defined observation is supported by independent, reproducible evidence.
+- **Unknown** — evidence is insufficient, missing, or conflicting.
+- **Not applicable** — the field does not apply.
+
+A documented limitation is still **Documented** when the source directly supports that limitation. Do not infer a whole-system result from one component record.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the [compatibility research methodology](docs/compatibility-methodology.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), the [compatibility research methodology](docs/compatibility-methodology.md), and the [source quality standards](docs/source-quality.md).
 
 ## Disclaimer
 
