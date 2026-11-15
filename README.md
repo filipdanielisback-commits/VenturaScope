@@ -22,6 +22,7 @@ VenturaScope helps users collect a readable summary of their PC hardware and com
 - [Open the live hardware database](https://filipdanielisback-commits.github.io/VenturaScope/hardware-database/)
 - [Browse community system profiles](https://filipdanielisback-commits.github.io/VenturaScope/system-profiles/)
 - [How to submit a community system profile](docs/community-system-profiles.md)
+- [Latest weekly research report](research/weekly/2026-11-15.md)
 - Browse the raw records in [data/](data/)
 
 ## Repository layout
@@ -34,6 +35,7 @@ VenturaScope/
 │   ├── motherboards.json
 │   ├── wifi.json
 │   ├── audio.json
+   │   ├── storage.json
 │   ├── test-systems.json
 │   └── sources.json
 ├── docs/
