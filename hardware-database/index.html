@@ -31,7 +31,7 @@
     <input id="search" type="search" placeholder="Search model, manufacturer, hardware ID…" aria-label="Search hardware records">
     <select id="category" aria-label="Filter by component">
       <option value="all">All components</option><option value="cpu">CPU</option><option value="gpu">GPU</option>
-      <option value="motherboard">Motherboard</option><option value="wifi">Wi-Fi</option><option value="audio">Audio</option>
+      <option value="motherboard">Motherboard</option><option value="wifi">Wi-Fi</option><option value="audio">Audio</option><option value="storage">Storage</option>
     </select>
   </div>
   <p id="count" aria-live="polite">Loading database…</p>
@@ -47,7 +47,8 @@ const datasets=[
   {key:"gpu",label:"GPU",url:"../data/gpus.json"},
   {key:"motherboard",label:"Motherboard",url:"../data/motherboards.json"},
   {key:"wifi",label:"Wi-Fi",url:"../data/wifi.json"},
-  {key:"audio",label:"Audio",url:"../data/audio.json"}
+  {key:"audio",label:"Audio",url:"../data/audio.json"},
+  {key:"storage",label:"Storage",url:"../data/storage.json"}
 ];
 const esc=value=>String(value??"—").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const recordsEl=document.querySelector("#records"),searchEl=document.querySelector("#search"),categoryEl=document.querySelector("#category"),countEl=document.querySelector("#count");
