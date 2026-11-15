@@ -13,15 +13,32 @@
       "hardware_ids": [],
       "assessment": {
         "status": "unknown",
-        "claim": "No Ventura compatibility conclusion has been established for this processor or any complete system using it.",
-        "limitations": ["CPU identification does not establish motherboard, firmware, graphics, or full-system compatibility."]
+        "claim": "No exact Pentium G630 plus macOS Ventura 13 test result is recorded. Intel's second-generation desktop Pentium datasheet includes the G630 in the G600 series. Current Dortania guidance states that Ventura drops support for pre-Haswell CPUs and its Sandy Bridge desktop guide lists macOS 12 Monterey as the last supported OS for that generation. This is strong project-guidance evidence against treating the G630 as Ventura-supported, but it is not an exact-system test or Apple's certification.",
+        "limitations": [
+          "The Intel datasheet establishes the processor family and model context, not macOS compatibility.",
+          "Dortania is reputable community project documentation, not Apple's official compatibility statement.",
+          "No independently verified Ventura test for this exact processor and Lenovo system has been found.",
+          "Do not turn this component-level evidence into a complete-system verdict."
+        ]
       },
       "sources": [
         {
-          "title": "Intel ARK - Pentium Processor G630",
-          "url": "https://ark.intel.com/",
+          "title": "Intel second-generation desktop Core, Pentium, and Celeron processor datasheet",
+          "url": "https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/2nd-gen-core-desktop-vol-1-datasheet.pdf",
           "type": "manufacturer",
-          "note": "Search the Intel product database for the exact processor model; verify specifications against the matching product entry."
+          "note": "Intel lists the Pentium G630 among the desktop Pentium G600-series processors. Document dated June 2013. Accessed 2026-11-15."
+        },
+        {
+          "title": "Dortania OpenCore Install Guide - Hardware Limitations",
+          "url": "https://dortania.github.io/OpenCore-Install-Guide/macos-limits",
+          "type": "project",
+          "note": "Current guide states macOS 13 and newer require AVX2 and that Ventura drops pre-Haswell CPU support. This is project guidance, not an exact G630 test. Accessed 2026-11-15."
+        },
+        {
+          "title": "Dortania OpenCore Install Guide - Desktop Sandy Bridge",
+          "url": "https://dortania.github.io/OpenCore-Install-Guide/config.plist/sandy-bridge.html",
+          "type": "project",
+          "note": "The Sandy Bridge desktop page lists macOS 12 Monterey as the last supported OS and points to the Ventura-specific limitations page. Accessed 2026-11-15."
         }
       ]
     }
