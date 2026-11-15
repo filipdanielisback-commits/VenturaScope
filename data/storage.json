@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "records": [],
+  "notes": [
+    "The currently documented Lenovo profile lists Disk 0 as an HDD with a reported capacity of 465.75 GB. The exact drive model, interface, controller, and firmware are not known.",
+    "Do not assume SATA from the HDD label alone, and do not create a storage-controller compatibility claim without an exact controller or device identifier.",
+    "Research lead checked 2026-11-15: Acidanthera NVMeFix targets selected behaviors of Apple's NVMe driver, including power-state management and timeout panics on certain controllers such as VMware and Samsung PM981. It requires Lilu 1.4.1 or newer and macOS 10.14 or newer. It is not a general SATA/HDD fix or a universal NVMe compatibility layer.",
+    "Keep storage and controller status unknown until exact model, interface, controller, firmware, macOS point release, and relevant test conditions are documented."
+  ]
+}
