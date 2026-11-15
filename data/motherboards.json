@@ -12,10 +12,21 @@
       "revision": null,
       "assessment": {
         "status": "unknown",
-        "claim": "The exact motherboard model and chipset have not been established.",
-        "limitations": ["The system model is not a substitute for an exact board model."]
+        "claim": "The exact motherboard model, chipset, revision, and firmware context have not been established. No Ventura compatibility evidence for this specific Lenovo board has been found.",
+        "limitations": [
+          "The system model is not a substitute for an exact board model.",
+          "Dortania's general statement that most motherboards are supported when the CPU is supported is not evidence for this specific board.",
+          "The current Sandy Bridge CPU research lead is a separate concern and must not be converted into a motherboard-specific verdict."
+        ]
       },
-      "sources": []
+      "sources": [
+        {
+          "title": "Dortania OpenCore Install Guide - Hardware Limitations",
+          "url": "https://dortania.github.io/OpenCore-Install-Guide/macos-limits",
+          "type": "project",
+          "note": "General motherboard guidance only; it does not identify or test Lenovo system model 1652K8G. Accessed 2026-11-15."
+        }
+      ]
     }
   ]
 }
